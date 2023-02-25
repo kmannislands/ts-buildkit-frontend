@@ -1,14 +1,14 @@
 {
-  "name": "tap-parser-combinator",
+  "name": "experimental-ts-buildkit-frontend",
   "version": "0.0.1",
-  "description": "Experimental approach to parser TAP version 13",
+  "description": "Experimental approach to a strongly-typed typescript buildkit frontend",
   "main": "dist/index.js",
   "type": "module",
   "keywords": [
-    "TAP",
-    "node:test",
-    "parser",
-    "parser combinator"
+    "buildkit",
+    "frontend",
+    "dockerfile",
+    "llb"
   ],
   "author": "Kieran Mann <kieranjarrettmann@gmail.com>",
   "license": "MIT",
