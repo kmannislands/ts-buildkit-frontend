@@ -13,11 +13,17 @@
   "author": "Kieran Mann <kieranjarrettmann@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "compile": "tsc -b",
-    "test": "node --watch ./dist"
+    "compile": "tsc -b --verbose",
+    "test": "node --watch ./dist",
+    "proto-js": "pbjs -t static-module -w es6 -o ./src/ops.js ./vendor/moby-buildkit/ops.proto",
+    "proto-ts": "pbts -o ./src/ops.d.ts ./src/ops.js"
   },
   "devDependencies": {
     "@types/node": "^18.14.1",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "protobufjs-cli": "^1.1.1"
+  },
+  "dependencies": {
+    "protobufjs": "^7.2.2"
   }
 }
