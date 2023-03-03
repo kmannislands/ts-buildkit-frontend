@@ -1,6 +1,7 @@
 import {
-  ExecOp,
   NetMode,
+  Op,
+  Platform,
   ProxyEnv,
   SecurityMode,
 } from "./moby-buildkit/ops.js";
@@ -36,7 +37,25 @@ const testExecOp = {
   secretenv: [],
 };
 
-ExecOp.encode(testExecOp, msgWriter);
+const platform: Platform = {
+  Architecture: "amd64",
+  OS: "linux",
+  Variant: "alpine",
+  OSVersion: "",
+  OSFeatures: [],
+};
+
+Op.encode(
+  {
+    inputs: [],
+    exec: testExecOp,
+    platform,
+    constraints: {
+      filter: [],
+    },
+  },
+  msgWriter
+);
 
 const encoded = msgWriter.finish();
 
@@ -44,6 +63,6 @@ await fs.writeFile("./llb-test.bin", encoded);
 
 console.log("Encoded msg", encoded);
 
-const readBack = ExecOp.decode(encoded);
+const readBack = Op.decode(encoded);
 
 console.log("Decoded back to", readBack);
